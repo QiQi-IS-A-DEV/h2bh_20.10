@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const teaseMessages = [
     "Ủa kì dạ, CLB chuẩn bị bất ngờ lắm ó! Bấm nhận quà đi mà 🥺",
     "Đừng bấm vào đây nữa nè, bấm nút 'Mở Thiệp' bên cạnh cơ! 👉👈",
-    "Bóng hồng H2BH mà khó tính vậy sao ta? Bấm nhận quà đi nàooo ✨",
+    "Bóng hồng OU H2BH mà khó tính vậy sao ta? Bấm nhận quà đi nàooo ✨",
     "Hôm nay 20/10 là ngày của bạn mà, hổng nhận là hối hận ráng chịu nha! 😜",
     "Năn nỉ luôn đó, chuyến bay 20/10 cùng đại gia đình H2BH đang chờ bạn á! ✈️🌸"
   ];
