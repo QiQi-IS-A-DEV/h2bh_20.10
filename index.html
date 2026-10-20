@@ -1,146 +1,407 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wanna be My Valentine??</title>
-    <link rel="stylesheet" href="style2.css" />
-    <meta name="description" content="There is a surprise." />
-    <meta name="keywords" content="Valentine, Love, Surprise" />
-    <meta name="author" content="Prashant" />
-    <meta name="robots" content="index, follow" />
-    <meta name="revisit-after" content="3 days" />
-    <meta name="language" content="English" />
-    <meta name="web_author" content="Prashant" />
-    <meta name="reply-to" content="" />
-    <meta name="rating" content="general" />
-    <meta name="og:title" content="There is a Surprise" />
-    <meta name="og:description" content="There is a surprise." />
-    <meta name="og:image" content="https://i.ibb.co/k6xD4nM/New-Project.jpg" />
-    <meta name="og:url" content="https://prashant-valentine.netlify.app/" />
-    <meta name="og:site_name" content="There is a Surprise" />
-    <meta name="og:locale" content="en_US" />
-    <meta name="og:type" content="website" />
-    <meta name="og:author" content="Prashant" />
-    <meta name="og:reply-to" content="" />
-    <meta name="og:web_author" content="Prashant" />
-    <meta name="og:rating" content="general" />
-  </head>
-  <body>
-    <div class="flex f-aps">
-      <p>
-        Made with ❤️ by
-        <a rel="noopener" href="https://www.linkedin.com/in/mjhasan21/" target="_blank">Your Teddy</a>
-        </p>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OU H2BH - Chúc Mừng Ngày Phụ Nữ Việt Nam 20.10 💐</title>
+  
+  <meta name="description" content="Món quà 20.10 đặc biệt dành tặng những đóa hoa rực rỡ nhất của OU Help to be Helped Club - Trường Đại học Mở TP.HCM" />
+  <meta property="og:title" content="OU H2BH - Chúc Mừng Ngày Phụ Nữ Việt Nam 20.10 💐" />
+  <meta property="og:description" content="Món quà đặc biệt dành tặng các bạn nữ thành viên đại gia đình OU H2BH." />
+  <meta property="og:type" content="website" />
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="style1.css" />
+  <link rel="stylesheet" href="card.css" />
+</head>
+<body>
+
+  <!-- Background Music Audio -->
+  <audio id="bgMusic" src="music.mp3" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg" />
+    <source src="music.mp3" type="audio/mp3" />
+  </audio>
+
+  <!-- Floating Sakura Canvas -->
+  <canvas id="sakuraCanvas"></canvas>
+
+  <!-- Floating Music Toggle Button -->
+  <button class="music-btn" id="musicBtn" title="Bật / Tắt nhạc">🎵</button>
+
+  <!-- Floating Re-open Card Button (shown when viewing flower garden) -->
+  <button class="btn-reopen-card" id="btnReopenCard">💌 Mở lại thiệp chúc mừng</button>
+
+  <!-- ==========================================
+       STAGE 1: WELCOME & INTERACTIVE INVITATION
+       ========================================== -->
+  <div id="stage-welcome">
+    <!-- Fluffy Floating Clouds -->
+    <div class="clouds-bg">
+      <div class="cloud cloud--1"></div>
+      <div class="cloud cloud--2"></div>
+      <div class="cloud cloud--3"></div>
+      <div class="cloud cloud--4"></div>
+    </div>
+
+    <div class="welcome-card">
+      <!-- Official Club Logo -->
+      <div class="logo-container">
+        <img src="logo.png" alt="OU Help to be Helped Club Logo" class="club-logo" />
+      </div>
+
+      <div class="club-badge">
+        <span class="airplane-icon">✈️</span> OU HELP TO BE HELPED CLUB
+      </div>
+      <!-- <p class="club-school">Trường Đại học Mở TP.HCM</p> -->
+
+      <h1 class="welcome-title">CHÀO MỪNG NGÀY<br>PHỤ NỮ VIỆT NAM 20.10 🌸</h1>
+      <p class="welcome-subtitle">
+        Chuyến bay 20/10 gửi trao những đóa hoa rực rỡ nhất đến các "bóng hồng" của OU H2BH!
       </p>
-      <a rel="noopener" target="_blank" href="https://github.com/junayed-hasan/
-      
-      ">
-        <img
-          class="image2"
-          src="https://logodix.com/logo/1205168.png"
-          alt="heyy"
-          id="heart1"
-        />
-      </a>
-    </div>
-    <h1 class="headerText" id="wedate">Will You Be My Valentine, Babe? 🥺</h1>
-    <img class="image" src="https://github.com/NikhilMarko03/resources/blob/main/happy1.gif?raw=true" alt="heyy" id="mainImg" />
-    <div class="flex" id="btns">
-      <button
-        class="button"
-        id="yes"
-        onmouseenter="happy()"
-        onmouseleave="normal()"
-        onclick="yes()"
-      >
-        Yes 🥰
-      </button>
-      <button
-        class="button"
-        id="no"
-        onmouseenter="angry()"
-        onmouseleave="normal()"
-        onclick="no()"
-      >
-        No 😭
-      </button>
-    </div>
-    <div class="absImages" id="absImg">
-      <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true" alt="heyy" />
-      <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true" alt="heyy" />
-      <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true" alt="heyy" />
-      <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true" alt="heyy" />
-      <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true" alt="heyy" />
-      <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true" alt="heyy" />
-      <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true" alt="heyy" />
-      <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true" alt="heyy" />
-      <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true" alt="heyy" />
-      <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true" alt="heyy" />
 
-      <!-- <img class="image2" src="./resources/sad.gif" alt="heyy" /> -->
+      <div class="gift-wrapper">
+        <div class="gift-container" id="giftBox" title="Nhấp để mở quà!">
+          <span class="gift-icon">🎁</span>
+        </div>
+      </div>
+      <p class="gift-tagline">Chúc các bạn một ngày 20/10 thật vui vẻ, luôn xinh đẹp, hạnh phúc và gặp nhiều điều tốt đẹp. </p>
+
+      <div class="btn-group">
+        <button class="btn btn-open" id="btnOpen">
+          <span>Mở thiệp</span>
+        </button>
+        <button class="btn btn-refuse" id="btnRefuse">
+          <span>Hổng thèm đâu</span> 
+        </button>
+      </div>
+
+      <div class="tease-toast" id="teaseToast"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       STAGE 2: FLOWER GARDEN STAGE (CSS FLOWERS)
+       ========================================== -->
+  <div id="stage-flower">
+    <div class="night"></div>
+
+    <div class="garden-header">
+      <h2>A little floral surprise for you 🌸💐🌸</h2>
+      <p>DÀNH TẶNG NHỮNG ĐÓA HOA XINH ĐẸP NHẤT CỦA OU H2BH</p>
     </div>
 
-    <div class="model" id="model2">
-      <audio id="happyMusic" style="opacity: 0" controls loop>
-        <source src="./resources/happy.mp3" type="audio/mp3" />
-        Your browser does not support the audio element.
-      </audio>
-      <div class="model-content">
-        <p class="modelText" id="modelText2">I Love you 😘😘</p>
-        <img
-          class="modelImg"
-          id="modelImg2"
-          src="https://takelessons.com/blog/wp-content/uploads/2013/07/happy-cat.gif"
-          alt="heyy"
-        />
-        <button
-          class="button"
-          id="yes"
-          onmouseenter="happy()"
-          onmouseleave="normal()"
-          onclick="ly2()"
-        >
-          Love You Too 🥰
+    <div class="flowers">
+      <!-- Flower 1 -->
+      <div class="flower flower--1">
+        <div class="flower__leafs flower__leafs--1">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+          <div class="flower__line__leaf flower__line__leaf--5"></div>
+          <div class="flower__line__leaf flower__line__leaf--6"></div>
+        </div>
+      </div>
+
+      <!-- Flower 2 -->
+      <div class="flower flower--2">
+        <div class="flower__leafs flower__leafs--2">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <!-- Flower 3 -->
+      <div class="flower flower--3">
+        <div class="flower__leafs flower__leafs--3">
+          <div class="flower__leaf flower__leaf--1"></div>
+          <div class="flower__leaf flower__leaf--2"></div>
+          <div class="flower__leaf flower__leaf--3"></div>
+          <div class="flower__leaf flower__leaf--4"></div>
+          <div class="flower__white-circle"></div>
+
+          <div class="flower__light flower__light--1"></div>
+          <div class="flower__light flower__light--2"></div>
+          <div class="flower__light flower__light--3"></div>
+          <div class="flower__light flower__light--4"></div>
+          <div class="flower__light flower__light--5"></div>
+          <div class="flower__light flower__light--6"></div>
+          <div class="flower__light flower__light--7"></div>
+          <div class="flower__light flower__light--8"></div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <!-- Decorative Foliage & Grass -->
+      <div class="grow-ans" style="--d:1.2s">
+        <div class="flower__g-long">
+          <div class="flower__g-long__top"></div>
+          <div class="flower__g-long__bottom"></div>
+        </div>
+      </div>
+
+      <div class="growing-grass">
+        <div class="flower__grass flower__grass--1">
+          <div class="flower__grass--top"></div>
+          <div class="flower__grass--bottom"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+          <div class="flower__grass__overlay"></div>
+        </div>
+      </div>
+
+      <div class="growing-grass">
+        <div class="flower__grass flower__grass--2">
+          <div class="flower__grass--top"></div>
+          <div class="flower__grass--bottom"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+          <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+          <div class="flower__grass__overlay"></div>
+        </div>
+      </div>
+
+      <div class="grow-ans" style="--d:2.4s">
+        <div class="flower__g-right flower__g-right--1">
+          <div class="leaf"></div>
+        </div>
+      </div>
+
+      <div class="grow-ans" style="--d:2.8s">
+        <div class="flower__g-right flower__g-right--2">
+          <div class="leaf"></div>
+        </div>
+      </div>
+
+      <div class="grow-ans" style="--d:2.8s">
+        <div class="flower__g-front">
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8">
+            <div class="flower__g-front__leaf"></div>
+          </div>
+          <div class="flower__g-front__line"></div>
+        </div>
+      </div>
+
+      <div class="grow-ans" style="--d:3.2s">
+        <div class="flower__g-fr">
+          <div class="leaf"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
+          <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
+        </div>
+      </div>
+
+      <div class="long-g long-g--0">
+        <div class="grow-ans" style="--d:3s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d:2.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d:3.4s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+      </div>
+
+      <div class="long-g long-g--1">
+        <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d:3.8s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d:4s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--3"></div></div>
+      </div>
+
+      <div class="long-g long-g--2">
+        <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d:4.4s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d:4.6s"><div class="leaf leaf--3"></div></div>
+      </div>
+
+      <div class="long-g long-g--3">
+        <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d:3s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+      </div>
+
+      <div class="long-g long-g--4">
+        <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d:3s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+      </div>
+
+      <div class="long-g long-g--5">
+        <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d:3s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+      </div>
+
+      <div class="long-g long-g--6">
+        <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d:4.4s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d:4.6s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d:4.8s"><div class="leaf leaf--3"></div></div>
+      </div>
+
+      <div class="long-g long-g--7">
+        <div class="grow-ans" style="--d:3s"><div class="leaf leaf--0"></div></div>
+        <div class="grow-ans" style="--d:3.2s"><div class="leaf leaf--1"></div></div>
+        <div class="grow-ans" style="--d:3.5s"><div class="leaf leaf--2"></div></div>
+        <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       STAGE 3: TRIBUTE LETTER & GROUP PHOTO MODAL
+       ========================================== -->
+  <div id="stage-card">
+    <div class="letter-modal">
+      <div class="letter-header">
+        <div class="modal-logo-wrap">
+          <img src="logo.png" alt="OU H2BH Logo" class="modal-logo" />
+        </div>
+        <span class="letter-badge">✈️ OU HELP TO BE HELPED CLUB ✈️</span>
+        <h2 class="letter-title">CHÚC MỪNG NGÀY PHỤ NỮ VIỆT NAM 20.10</h2>
+        <p class="letter-recipient">Thân gửi những bóng hồng rực rỡ nhất của H2BH 💐</p>
+      </div>
+
+      <!-- Polaroid Group Photo Frame -->
+      <div class="photo-frame-wrapper">
+        <div class="polaroid-card" id="polaroidCard" title="Nhấp để xem ảnh phóng to">
+          <!-- Checks for h2bh-team.jpg, falls back to image.jpeg smoothly -->
+          <img
+            id="clubPhoto"
+            class="club-img"
+            src="h2bh-team.jpg"
+            alt="Đại gia đình OU H2BH"
+            onerror="this.onerror=null; this.src='image.jpeg';"
+          />
+          <p class="polaroid-caption">Khoảnh khắc thanh xuân cùng OU H2BH </p>
+        </div>
+      </div>
+
+      <!-- Letter Message -->
+      <div class="letter-message">
+        <p>
+          Thân gửi toàn thể các bạn nữ trong đại gia đình 
+          <span class="letter-highlight">OU Help to be Helped Club (OU H2BH)</span> - 
+          CLB Hỗ trợ người học nước ngoài học tập tại Trường Đại học Mở TP.HCM,
+        </p>
+        <p>
+          Nhân ngày Phụ nữ Việt Nam 20/10, đại gia đình H2BH xin gửi đến những "bóng hồng" tuyệt vời nhất 
+          những lời chúc ấm áp, ngọt ngào và tràn đầy năng lượng tích cực!
+        </p>
+        <p>
+          Cảm ơn các bạn đã luôn đồng hành bằng <span class="letter-highlight">nụ cười rạng rỡ, sự tận tâm và trái tim nhiệt huyết</span> 
+          trong từng hoạt động kết nối, giao lưu văn hóa và hỗ trợ các bạn sinh viên quốc tế tại OU. Chính sự dịu dàng, 
+          thông minh và tinh thần cống hiến của các bạn đã tạo nên một H2BH thật ấm cúng, thân thiện và đầy tự hào.
+        </p>
+        <p>
+          Chúc các bạn có một ngày 20/10 thật hạnh phúc, ngập tràn hoa, quà và những điều ngọt ngào nhất. Mong rằng trên mọi 
+          chặng đường học tập và thanh xuân sắp tới, các bạn luôn tự tin, tỏa sáng và mãi là những đóa hoa rạng rỡ nhất của H2BH! 🌸
+        </p>
+      </div>
+
+      <!-- Signature -->
+      <div class="letter-signature">
+        <p class="sig-title">Thân thương từ,</p>
+        <p class="sig-name">Các Bạn Nam OU H2BH ❤️</p>
+      </div>
+
+      <!-- Card Action Buttons -->
+      <div class="card-actions">
+        <button class="btn-toggle-view" id="btnToggleView">
+          <span>🌸</span> Ngắm trọn vườn hoa
+        </button>
+        <button class="btn-cheer" id="btnCheer">
+          <span>💖</span> Gửi lời yêu thương
         </button>
       </div>
     </div>
+  </div>
 
-    <div id="model" class="model">
-      <audio id="sadMusic" style="opacity: 0" controls loop>
-        <source src="./resources/sad.mp3" type="audio/mp3" />
-        Your browser does not support the audio element.
-      </audio>
-      <div class="model-content">
-        <p class="modelText" id="modelText">Please</p>
-        <img
-          class="modelImg"
-          id="modelImg"
-          src="https://media1.tenor.com/images/9413ffc5a11722a3cc456a88810750bd/tenor.gif?itemid=14193216"
-          alt="heyy"
-        />
-        <div class="flex">
-          <button
-            class="button"
-            id="yes"
-            onmouseenter="happy()"
-            onmouseleave="normal()"
-            onclick="yes()"
-          >
-            Yes 🥰
-          </button>
-          <button
-            class="button"
-            id="no"
-            onmouseenter="angry()"
-            onmouseleave="normal()"
-            onclick="no()"
-          >
-            No 😭
-          </button>
-        </div>
-      </div>
-    </div>
-  </body>
-  <script src="main2.js"></script>
+  <!-- Lightbox Modal for Photo Zoom -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" title="Đóng">&times;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Ảnh tập thể H2BH" />
+  </div>
+
+  <!-- Logic script -->
+  <script src="card.js"></script>
+</body>
 </html>

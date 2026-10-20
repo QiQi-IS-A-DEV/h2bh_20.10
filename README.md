@@ -1,84 +1,59 @@
-# Valentines Blossoming Flower 💖🌸
+# 🌸 Thiệp Chúc Mừng 20.10 - OU Help to be Helped Club (H2BH) 💖
 
-Welcome to **Valentines Blossoming Flower**, a beautifully designed interactive webpage to surprise your loved one! This project creates a romantic digital experience where users are prompted with a question: **"Will You Be My Valentine?"** and are given an engaging and fun way to respond.
-
-🌐 **Live Demo**: You can check out the live version of this project at [junayed-hasan.github.io/valentines_blossoming_flower](https://junayed-hasan.github.io/valentines_blossoming_flower/). Easily host it on **GitHub Pages** and send the link to your loved one for a sweet surprise! 💕
-
-## ✨ Features
-- A heartwarming Valentine’s Day invitation with animated responses.
-- Fun and interactive Yes/No button behavior.
-- Beautiful floral animation with glowing effects.
-- Background music to enhance the experience.
-- Surprise blossom animation when the answer is **Yes**.
-- A pleading animation if **No** is selected.
-
-## 🖼️ Preview
-| Screenshot | Description |
-|------------|------------|
-| ![Will You Be My Valentine?](ss1.png) | Initial prompt asking the user to be the valentine. |
-| ![If No is Clicked](ss2.png) | Fun interaction where the button changes behavior with pleading animations. |
-| ![If Yes is Clicked](ss3.png) | Romantic response with flower blooming and a special message. |
-
-## 🎨 Customization Guide
-You can personalize this project in the following ways:
-
-### 1️⃣ Change the Background Image
-Replace `image.jpeg` with your desired background image, ensuring the filename remains `image.jpeg`.
-
-### 2️⃣ Modify the Text and Messages
-- Edit the main message inside **index.html** in the following section:
-  ```html
-  <h1 class="headerText" id="wedate">Will You Be My Valentine, Babe? 🥺</h1>
-  ```
-- Update the response message when **Yes** is clicked:
-  ```html
-  wedate.innerText = "We are each other's valentine now. I love you cutie. ❤️😘";
-  ```
-  in `main2.js` inside the `yes()` function.
-
-- Edit the floral surprise text inside **index1.html**:
-  ```html
-  <h1 style="color: rgb(162, 247, 219); margin-top: 3%;">A little floral surprise for you 🌸💐🌸 </h1>
-  ```
-  Change this text to personalize your message.
-
-### 3️⃣ Adjust the Button Behavior
-- Customize the No button responses inside **main2.js**, modifying the `blackmail` array for different pleading messages.
-- Change the images used for happy/sad animations inside `main2.js`:
-  ```javascript
-  mainImg.src = "https://github.com/NikhilMarko03/resources/blob/main/happy3.gif?raw=true";
-  ```
-
-### 4️⃣ Modify Styles (Colors, Fonts, Effects)
-- Edit **style1.css** and **style2.css** to change the aesthetic, including:
-  - Button colors
-  - Font styles (import different fonts from Google Fonts)
-  - Background colors and effects
-
-### 5️⃣ Add Your Name
-- Replace `Your Teddy` in **index.html** with your own signature:
-  ```html
-  <a rel="noopener" href="https://www.linkedin.com/in/mjhasan21/" target="_blank">Your Teddy</a>
-  ```
-
-## 🚀 How to Use
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/junayed-hasan/valentines_blossoming_flower.git
-   ```
-2. Open `index.html` in any modern web browser.
-3. Enjoy the experience with your loved one! 💕
-
-## 🔧 Project Origin
-This project is a updated version and creative combination of two different projects:
-- [CSS Blossoming Flowers at Magical Night](https://codepen.io/mdusmanansari/pen/BamepLe) by **Md Usman Ansari**.
-- [Will you be my valentine](https://codepen.io/Sleeping-Bot/pen/VwREBdg) by **Sleeping-Bot**.
-
-These projects were customized and creatively merged to create a unique and interactive Valentine’s experience. 🎨✨
-
-## ⭐ Show Some Love
-If you like this project, consider **starring** ⭐ this repository to spread the love and appreciation!
+Dự án thiệp điện tử chúc mừng **Ngày Phụ nữ Việt Nam 20/10** dành tặng các bạn nữ thành viên, cộng tác viên và các bạn nữ quốc tế của **CLB Hỗ trợ người học nước ngoài học tập tại Trường Đại học Mở TP.HCM (OU Help to be Helped Club - H2BH)**.
 
 ---
-💖 Made with love by [Mohammad Junayed Hasan](https://github.com/junayed-hasan).
 
+## ✨ Điểm Nổi Bật & Tính Năng
+
+- **Tone màu Hồng Pastel (Pastel Pink & Soft Rose):** Tươi sáng, dịu dàng, trang nhã.
+- **Trải nghiệm liền mạch (Single Page):**
+  1. **Màn 1 - Mở quà tò mò:** Lời chào từ H2BH + Hộp quà tương tác (`🎁`) + Nút *"Mở Hộp Quà 20/10"* & Nút *"Hổng thèm đâu"* với các câu trêu đùa hóm hỉnh.
+  2. **Màn 2 - Vườn hoa nở bừng sáng (CSS Blossoming Flowers):** Đóa hoa phát sáng sắc hồng pastel bung nở nhẹ nhàng kèm hiệu ứng cánh hoa anh đào rơi.
+  3. **Màn 3 - Bức thiệp tri ân & Khung ảnh kỷ niệm:** Khung ảnh Polaroid hiển thị ảnh tập thể CLB (nhấp để phóng to xem chi tiết) kèm bức thư chúc mừng 20/10 ý nghĩa.
+- **Âm nhạc nền (Smart Audio):** Hỗ trợ phát nhạc tự động khi mở quà, có nút bật/tắt xoay tròn ở góc màn hình. Tự động chuyển sang nhạc đệm Piano lãng mạn qua Web Audio API nếu chưa có file MP3 cục bộ.
+- **Tương thích hoàn hảo trên điện thoại di động & máy tính.**
+
+---
+
+## 📸 Cách Chèn Ảnh Tập Thể CLB
+
+1. Chuẩn bị file ảnh tập thể của CLB H2BH.
+2. Đổi tên file thành `h2bh-team.jpg` và copy vào ngay thư mục gốc của dự án này:
+   ```
+   d:\Project\OUH2BH\h2bh_20.10\h2bh-team.jpg
+   ```
+3. Mở lại trang web, ảnh tập thể sẽ lập tức xuất hiện lung linh trong khung ảnh Polaroid!  
+   *(Nếu chưa có file `h2bh-team.jpg`, trang web sẽ tự động hiển thị ảnh dự phòng `image.jpeg` để tránh lỗi).*
+
+---
+
+## 🎵 Cách Thêm Nhạc Nền Tùy Chọn (Nếu muốn)
+
+Nếu bạn có một bài hát cụ thể (ví dụ: một bài acoustic/piano yêu thích):
+1. Đổi tên file nhạc thành `music.mp3`.
+2. Đặt vào thư mục gốc của dự án:
+   ```
+   d:\Project\OUH2BH\h2bh_20.10\music.mp3
+   ```
+*(Nếu không thêm, trang web đã tự động tạo giai điệu du dương mượt mà).*
+
+---
+
+## 🚀 Cách Đưa Lên GitHub Pages Để Gửi Link
+
+1. Đẩy mã nguồn lên GitHub:
+   ```bash
+   git add .
+   git commit -m "Update OU H2BH 20.10 pastel pink card"
+   git push origin main
+   ```
+2. Truy cập vào repository GitHub của bạn (`https://github.com/QiQi-IS-A-DEV/h2bh_20.10`).
+3. Vào **Settings** $\rightarrow$ **Pages** (ở cột bên trái).
+4. Ở phần **Branch**, chọn nhánh `main`, thư mục `/(root)` và nhấn **Save**.
+5. Đợi 1-2 phút, bạn sẽ có link chia sẻ dạng:
+   `https://qiqi-is-a-dev.github.io/h2bh_20.10/`
+
+---
+
+💖 *Made with love by Đại gia đình OU H2BH - Trường Đại học Mở TP.HCM.*

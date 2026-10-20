@@ -1,0 +1,1153 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+
+:root {
+  --h2bh-blue: #0077b6;
+  --h2bh-deep-blue: #023e8a;
+  --h2bh-light-blue: #0096c7;
+  --h2bh-cyan: #48cae4;
+  --h2bh-sky: #e0f2fe;
+  --primary-pink: #ff758f;
+  --secondary-pink: #ff4d6d;
+  --pastel-blush: #ffe5ec;
+  --soft-rose: #ffb3c1;
+  --deep-rose: #c9184a;
+  --dark-plum: #2b112c;
+  --text-dark: #1e3a5f;
+  --text-muted: #475569;
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(186, 230, 253, 0.7);
+  --shadow-blue: 0 12px 35px rgba(0, 119, 182, 0.22);
+  --shadow-pink: 0 15px 40px rgba(255, 117, 143, 0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quicksand', 'Montserrat', sans-serif;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 30%, #fff0f3 0%, #ffe3e9 50%, #ffd0db 100%);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Falling Sakura Canvas */
+#sakuraCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* Floating Music Toggle */
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid var(--soft-rose);
+  box-shadow: 0 4px 15px rgba(255, 117, 143, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 200;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 117, 143, 0.4);
+}
+
+.music-btn.playing {
+  animation: spinMusic 4s linear infinite;
+}
+
+@keyframes spinMusic {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ===================================================
+   STAGE 1: WELCOME & INTERACTIVE INVITATION
+   =================================================== */
+#stage-welcome {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 50;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  background: radial-gradient(circle at 50% 20%, #f0f9ff 0%, #e0f2fe 45%, #fce7f3 100%);
+}
+
+#stage-welcome.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+/* Fluffy Floating White Clouds */
+.clouds-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cloud {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 100px;
+  opacity: 0.85;
+  filter: drop-shadow(0 8px 18px rgba(0, 119, 182, 0.09));
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+/* Cloud 1 (Top Left) */
+.cloud--1 {
+  width: 140px;
+  height: 45px;
+  top: 8%;
+  left: 5%;
+  animation: floatCloud1 20s ease-in-out infinite alternate;
+}
+.cloud--1::before {
+  width: 60px;
+  height: 60px;
+  top: -26px;
+  left: 20px;
+}
+.cloud--1::after {
+  width: 48px;
+  height: 48px;
+  top: -18px;
+  left: 65px;
+}
+
+/* Cloud 2 (Top Right) */
+.cloud--2 {
+  width: 170px;
+  height: 52px;
+  top: 12%;
+  right: 6%;
+  animation: floatCloud2 25s ease-in-out infinite alternate;
+  opacity: 0.78;
+}
+.cloud--2::before {
+  width: 70px;
+  height: 70px;
+  top: -30px;
+  left: 28px;
+}
+.cloud--2::after {
+  width: 55px;
+  height: 55px;
+  top: -22px;
+  left: 80px;
+}
+
+/* Cloud 3 (Bottom Left) */
+.cloud--3 {
+  width: 130px;
+  height: 40px;
+  bottom: 10%;
+  left: 8%;
+  animation: floatCloud1 22s ease-in-out infinite alternate-reverse;
+  opacity: 0.78;
+}
+.cloud--3::before {
+  width: 55px;
+  height: 55px;
+  top: -24px;
+  left: 18px;
+}
+.cloud--3::after {
+  width: 44px;
+  height: 44px;
+  top: -16px;
+  left: 58px;
+}
+
+/* Cloud 4 (Bottom Right) */
+.cloud--4 {
+  width: 150px;
+  height: 46px;
+  bottom: 14%;
+  right: 8%;
+  animation: floatCloud2 22s ease-in-out infinite alternate-reverse;
+  opacity: 0.72;
+}
+.cloud--4::before {
+  width: 60px;
+  height: 60px;
+  top: -26px;
+  left: 22px;
+}
+.cloud--4::after {
+  width: 48px;
+  height: 48px;
+  top: -18px;
+  left: 72px;
+}
+
+@keyframes floatCloud1 {
+  0% { transform: translateX(0px) translateY(0px); }
+  50% { transform: translateX(25px) translateY(-8px); }
+  100% { transform: translateX(-15px) translateY(4px); }
+}
+
+@keyframes floatCloud2 {
+  0% { transform: translateX(0px) translateY(0px); }
+  50% { transform: translateX(-25px) translateY(8px); }
+  100% { transform: translateX(18px) translateY(-5px); }
+}
+
+.welcome-card {
+  max-width: 520px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.88);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 32px;
+  padding: 36px 30px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 119, 182, 0.16), 0 10px 25px rgba(255, 117, 143, 0.14);
+  backdrop-filter: blur(16px);
+  position: relative;
+  z-index: 5;
+  animation: cardEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.88) translateY(35px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Club Logo */
+.logo-container {
+  margin: -6px auto 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: logoEntrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.15s;
+}
+
+@keyframes logoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.club-logo {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 119, 182, 0.22));
+  animation: logoFloat 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes logoFloat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-5px) rotate(1.5deg); }
+}
+
+.modal-logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.modal-logo {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 119, 182, 0.2));
+}
+
+/* Club Badge */
+.club-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  color: #023e8a;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 15px rgba(0, 119, 182, 0.16);
+  border: 1.5px solid #7dd3fc;
+  animation: badgeDrop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.25s;
+}
+
+.airplane-icon {
+  display: inline-block;
+  font-size: 16px;
+  animation: planeFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes planeFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-2px) rotate(-10deg); }
+}
+
+@keyframes badgeDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.club-school {
+  font-size: 13.5px;
+  color: #0077b6;
+  font-weight: 700;
+  margin-top: -6px;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  animation: fadeInMove 0.8s ease both 0.35s;
+}
+
+/* Headings */
+.welcome-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #023e8a 0%, #0077b6 40%, #ff4d6d 75%, #c9184a 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.35;
+  margin-bottom: 12px;
+  animation: fadeInMove 0.8s cubic-bezier(0.16, 1, 0.3, 1) both 0.45s, titleShimmer 6s linear infinite 1.2s;
+}
+
+@keyframes titleShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.welcome-subtitle {
+  font-size: 14.5px;
+  color: #334155;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  animation: fadeInMove 0.8s ease both 0.55s;
+}
+
+@keyframes fadeInMove {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Interactive Gift Box with Airplane Orbit */
+.gift-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 8px auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: giftPopIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.65s;
+}
+
+.gift-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes giftPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-25deg);
+  }
+  70% {
+    transform: scale(1.18) rotate(6deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.gift-icon {
+  font-size: 75px;
+  display: inline-block;
+  animation: giftBounce 2s ease-in-out infinite 1.5s;
+  filter: drop-shadow(0 10px 18px rgba(0, 119, 182, 0.3));
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gift-container:hover .gift-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+@keyframes giftBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.gift-tagline {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0077b6;
+  margin-bottom: 22px;
+  animation: fadeInMove 0.8s ease both 0.75s;
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-open {
+  background: linear-gradient(135deg, #023e8a 0%, #0077b6 45%, #0096c7 75%, #ff758f 100%);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 119, 182, 0.35), 0 4px 12px rgba(255, 117, 143, 0.25);
+  position: relative;
+  overflow: hidden;
+  animation: btnPopIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.85s, pulseGlowBlue 2.2s infinite 1.7s;
+}
+
+.btn-open::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  transform: rotate(25deg);
+  animation: buttonShine 3s infinite 2s;
+  pointer-events: none;
+}
+
+@keyframes buttonShine {
+  0% { left: -60%; }
+  35%, 100% { left: 140%; }
+}
+
+@keyframes btnPopIn {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.btn-open:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 119, 182, 0.5), 0 6px 18px rgba(255, 117, 143, 0.35);
+}
+
+@keyframes pulseGlowBlue {
+  0% { box-shadow: 0 0 0 0 rgba(0, 119, 182, 0.5); }
+  70% { box-shadow: 0 0 0 14px rgba(0, 119, 182, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 119, 182, 0); }
+}
+
+.btn-refuse {
+  background: #ffffff;
+  color: #475569;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  position: relative;
+  animation: btnPopIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both 0.95s;
+}
+
+.btn-refuse:hover {
+  background: #f1f5f9;
+  color: #0077b6;
+  border-color: #0077b6;
+}
+
+/* Teasing Toast */
+.tease-toast {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(255, 241, 242, 0.95);
+  border: 1.5px solid #fda4af;
+  color: #9f1239;
+  padding: 0 16px;
+  border-radius: 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.45;
+  box-shadow: 0 4px 15px rgba(244, 63, 94, 0.12);
+  text-align: center;
+  white-space: normal;
+  word-break: break-word;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  margin: 0 auto;
+  transform: translateY(-6px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.tease-toast.show {
+  opacity: 1;
+  max-height: 90px;
+  padding: 10px 16px;
+  margin-top: 14px;
+  transform: translateY(0);
+}
+
+/* ===================================================
+   STAGE 2: FLOWER GARDEN STAGE
+   =================================================== */
+#stage-flower {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  perspective: 1000px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.5s ease;
+  z-index: 10;
+}
+
+#stage-flower.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#stage-flower .night {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 35%, #fff5f8 0%, #fde2e8 45%, #fbcfe8 100%) !important;
+  transform: none !important;
+  z-index: 1;
+}
+
+#stage-flower .flowers {
+  position: relative;
+  transform: scale(0.88);
+  transform-origin: bottom center;
+  z-index: 15;
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  #stage-flower .flowers {
+    transform: scale(0.55) !important;
+    transform-origin: bottom center !important;
+    bottom: 2vmin !important;
+  }
+}
+
+/* Title on top of flower garden */
+.garden-header {
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 30;
+  width: 90%;
+  max-width: 700px;
+  animation: fadeInDown 1.5s ease 0.5s backwards;
+}
+
+.garden-header h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 34px;
+  color: #9d174d;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.95);
+  margin-bottom: 4px;
+}
+
+.garden-header p {
+  font-size: 14px;
+  color: #023e8a;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.95);
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ===================================================
+   STAGE 3: TRIBUTE LETTER & GROUP PHOTO MODAL
+   =================================================== */
+#stage-card {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 70;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(30px);
+}
+
+#stage-card.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.letter-modal {
+  max-width: 650px;
+  width: 100%;
+  max-height: 88vh;
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  border-radius: 28px;
+  padding: 32px 28px;
+  box-shadow: 0 20px 50px rgba(0, 119, 182, 0.16), 0 10px 30px rgba(255, 117, 143, 0.22);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: var(--soft-rose) transparent;
+}
+
+.letter-modal::-webkit-scrollbar {
+  width: 6px;
+}
+.letter-modal::-webkit-scrollbar-thumb {
+  background: var(--soft-rose);
+  border-radius: 10px;
+}
+
+/* Card Header */
+.letter-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.letter-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+  color: #023e8a;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+  border: 1.5px solid #7dd3fc;
+  box-shadow: 0 3px 10px rgba(0, 119, 182, 0.15);
+}
+
+.letter-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #023e8a;
+  margin-bottom: 6px;
+}
+
+.letter-recipient {
+  font-family: 'Dancing Script', cursive;
+  font-size: 24px;
+  color: #ff4d6d;
+  font-weight: 700;
+}
+
+/* Group Photo Polaroid Frame */
+.photo-frame-wrapper {
+  margin: 15px auto 25px;
+  text-align: center;
+}
+
+.polaroid-card {
+  display: inline-block;
+  background: #ffffff;
+  padding: 12px 12px 18px 12px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(255, 117, 143, 0.2);
+  transform: rotate(-1.5deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 480px;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.polaroid-card::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 22px;
+  background: rgba(255, 182, 193, 0.65);
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+}
+
+.polaroid-card:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18), 0 5px 15px rgba(255, 117, 143, 0.3);
+}
+
+.club-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.polaroid-caption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 20px;
+  color: var(--text-dark);
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+/* Letter Content */
+.letter-message {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #3d2331;
+  text-align: justify;
+  margin-bottom: 24px;
+}
+
+.letter-message p {
+  margin-bottom: 14px;
+}
+
+.letter-highlight {
+  font-weight: 700;
+  color: var(--deep-rose);
+}
+
+/* Signature */
+.letter-signature {
+  text-align: right;
+  margin-top: 20px;
+  border-top: 1px dashed var(--soft-rose);
+  padding-top: 16px;
+}
+
+.sig-title {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.sig-name {
+  font-family: 'Dancing Script', cursive;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--deep-rose);
+}
+
+/* Card Actions */
+.card-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.btn-toggle-view {
+  background: linear-gradient(135deg, #0077b6 0%, #0096c7 60%, #ff758f 100%);
+  color: white;
+  padding: 11px 24px;
+  border-radius: 30px;
+  font-size: 14.5px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 119, 182, 0.3);
+}
+
+.btn-toggle-view:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 119, 182, 0.45);
+}
+
+.btn-cheer {
+  background: #ffffff;
+  color: var(--deep-rose);
+  border: 1.5px solid var(--soft-rose);
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.btn-cheer:hover {
+  background: #ffe5ec;
+  transform: translateY(-2px);
+}
+
+/* Floating "Re-open Card" Button when card is hidden */
+.btn-reopen-card {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1.5px solid var(--soft-rose);
+  color: var(--deep-rose);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 26px;
+  border-radius: 50px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-reopen-card.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.btn-reopen-card:hover {
+  background: #ffffff;
+  transform: translateX(-50%) translateY(-3px) scale(1.05);
+}
+
+/* Lightbox Modal for Photo Preview */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 300;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Confetti heart animation */
+.heart-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 250;
+  animation: floatHeart 2.5s ease-out forwards;
+}
+
+@keyframes floatHeart {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.6) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-220px) scale(1.4) rotate(30deg);
+  }
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN (MOBILE OPTIMIZED)
+   =================================================== */
+@media (max-width: 600px) {
+  /* Welcome Card on Mobile */
+  .welcome-card {
+    max-width: 92vw;
+    padding: 24px 18px;
+    border-radius: 24px;
+    margin: auto 0;
+  }
+  .club-logo {
+    width: 72px;
+    height: 72px;
+  }
+  .club-badge {
+    font-size: 11.5px;
+    padding: 6px 14px;
+    margin-bottom: 10px;
+  }
+  .club-school {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  .welcome-title {
+    font-size: 19px;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .welcome-subtitle {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .gift-wrapper {
+    width: 90px;
+    height: 90px;
+    margin: 4px auto 10px;
+  }
+  .gift-icon {
+    font-size: 58px;
+  }
+  .gift-tagline {
+    font-size: 12.5px;
+    margin-bottom: 16px;
+  }
+  .btn-group {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  .btn {
+    font-size: 14px;
+    padding: 12px 18px;
+    width: 100%;
+    justify-content: center;
+  }
+  .tease-toast {
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+  .tease-toast.show {
+    padding: 8px 12px;
+    margin-top: 10px;
+    max-height: 100px;
+  }
+
+  /* Clouds on Mobile */
+  .cloud--1 { width: 90px; height: 30px; top: 4%; left: 3%; }
+  .cloud--2 { width: 110px; height: 35px; top: 6%; right: 4%; }
+  .cloud--3 { width: 85px; height: 28px; bottom: 5%; left: 4%; }
+  .cloud--4 { width: 95px; height: 30px; bottom: 8%; right: 4%; }
+
+  /* Flower Stage on Mobile */
+  #stage-flower .flowers {
+    transform: scale(0.52) !important;
+    transform-origin: bottom center !important;
+    bottom: 2vmin !important;
+  }
+  .garden-header {
+    top: 15px;
+    width: 92%;
+  }
+  .garden-header h2 {
+    font-size: 22px;
+  }
+  .garden-header p {
+    font-size: 11.5px;
+  }
+
+  /* Letter Modal on Mobile */
+  .letter-modal {
+    padding: 20px 16px;
+    max-height: 84vh;
+    width: 92vw;
+    border-radius: 20px;
+  }
+  .modal-logo {
+    width: 52px;
+    height: 52px;
+  }
+  .letter-badge {
+    font-size: 11.5px;
+    padding: 4px 12px;
+  }
+  .letter-title {
+    font-size: 17px;
+    line-height: 1.3;
+  }
+  .letter-recipient {
+    font-size: 19px;
+  }
+  .photo-frame-wrapper {
+    margin: 10px auto 14px;
+  }
+  .polaroid-card {
+    padding: 8px 8px 12px 8px;
+  }
+  .club-img {
+    height: 160px;
+  }
+  .polaroid-caption {
+    font-size: 16px;
+    margin-top: 6px;
+  }
+  .letter-message {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .letter-message p {
+    margin-bottom: 10px;
+  }
+  .sig-name {
+    font-size: 19px;
+  }
+  .card-actions {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .card-actions button {
+    width: 100%;
+    justify-content: center;
+    font-size: 13.5px;
+    padding: 10px 14px;
+  }
+
+  /* Floating UI on Mobile */
+  .music-btn {
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+  .btn-reopen-card {
+    bottom: 14px;
+    font-size: 13px;
+    padding: 9px 18px;
+  }
+}
